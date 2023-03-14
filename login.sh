@@ -1,20 +1,22 @@
 source sample.sh
 
+
 echo "Please enter your username and password: "
-read -p "Enter username" username
-read -s -p "Enter password" password
+read -p "Enter username: " username
+read -s -p "Enter password: " password
 echo ""
+espeak "Hello! Welcome back $username"
 
 if val "$username" "$password";
 then
 while true;
 do
-echo "--------------------"
+#echo "--------------------"
 echo "Please choose an option:"
-echo "1. Display Available software"
+echo "1. Available software"
 echo "2. Download software"
 echo "3. Delete software"
-echo "4. exit"
+echo "4. back"
 echo "--------------------"
 read -p "Option: " option
 case $option in
@@ -22,13 +24,13 @@ case $option in
 show
 ;;
 2)
-delete 
+download 
 ;;
 3)
-Download
+Delete
 ;;
 4)
-exit 0
+source display.sh
 ;;
 *)
 echo "Invalid Option"
@@ -36,8 +38,8 @@ echo "Invalid Option"
 esac
 done
 else
-echo "Invalid username"
+espeak "Invalid username"
 exit 1
 fi
-
+clear
 
